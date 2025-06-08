@@ -4,47 +4,13 @@ import CardEffect from "../components/Card-Effect";
 import { AnimatePresence, motion } from "framer-motion";
 import { ViewGridIcon, StackIcon } from "@radix-ui/react-icons";
 
-// Dữ liệu mẫu, bạn có thể thay bằng props hoặc fetch API
-const sampleList = [
-  {
-    id: 1,
-    avatar_url: "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
-    name: "Ảnh 1",
-  },
-  {
-    id: 2,
-    avatar_url: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca",
-    name: "Ảnh 2",
-  },
-  {
-    id: 3,
-    avatar_url: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308",
-    name: "Ảnh 3",
-  },
-  {
-    id: 4,
-    avatar_url: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e",
-    name: "Ảnh 4",
-  },
-  {
-    id: 5,
-    avatar_url: "https://images.unsplash.com/photo-1519985176271-adb1088fa94c",
-    name: "Ảnh 5",
-  },
-  {
-    id: 6,
-    avatar_url: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92",
-    name: "Ảnh 6",
-  },
-];
-
 export default function Gallery() {
   const [mode, setMode] = useState("list");
   const [list, setList] = useState([]);
   useEffect(() => {
     async function fetchData() {
       // Giả lập fetch dữ liệu, bạn có thể thay bằng API thực tế
-      fetch("http://localhost:3030/gallary/items")
+      fetch("https://be-moon.onrender.com/gallary/items")
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
