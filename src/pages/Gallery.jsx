@@ -10,7 +10,7 @@ export default function Gallery() {
   useEffect(() => {
     async function fetchData() {
       // Giả lập fetch dữ liệu, bạn có thể thay bằng API thực tế
-      fetch("http://localhost:3030/gallary/items")
+      fetch("https://be-moon.onrender.com/gallary/items")
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
