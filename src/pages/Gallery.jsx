@@ -10,12 +10,12 @@ export default function Gallery() {
   useEffect(() => {
     async function fetchData() {
       // Giả lập fetch dữ liệu, bạn có thể thay bằng API thực tế
-      fetch("https://be-moon.onrender.com/gallary/items")
+      fetch("http://localhost:3030/gallary/items")
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
           setList(data.meta);
-        })
+        });
     }
     fetchData();
   }, []);
@@ -28,8 +28,9 @@ export default function Gallery() {
           Bộ sưu tập Moon
         </h1>
         <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-          Khám phá những khoảnh khắc đẹp nhất được lưu giữ trong bộ sưu tập của
-          chúng tôi
+          Hi vọng sau này có bấp bênh hay điều gì đó khó khăn hãy nhìn lại những
+          bức ảnh này có thể sẽ kiến chị vui hơn, và hãy nhìn vào những bức ảnh
+          này chị đã từng vui vẻ như thế nào nhé iuuuuu :)))
         </p>
       </div>
 

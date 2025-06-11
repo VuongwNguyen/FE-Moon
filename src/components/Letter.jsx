@@ -7,7 +7,7 @@ const ShootingStar = ({ delay, duration, x, y }) => {
 
   useEffect(() => {
     const star = starRef.current;
-    
+
     const tl = gsap.timeline({
       repeat: -1,
       delay: delay,
@@ -27,11 +27,7 @@ const ShootingStar = ({ delay, duration, x, y }) => {
   }, [delay, duration]);
 
   return (
-    <div
-      ref={starRef}
-      className="absolute w-1 h-1"
-      style={{ left: x, top: y }}
-    >
+    <div ref={starRef} className="absolute w-1 h-1" style={{ left: x, top: y }}>
       <svg viewBox="0 0 24 24" className="w-full h-full text-white">
         <path
           fill="currentColor"
@@ -47,7 +43,7 @@ const Sparkle = ({ delay, duration, x, y }) => {
 
   useEffect(() => {
     const sparkle = sparkleRef.current;
-    
+
     const tl = gsap.timeline({
       repeat: -1,
       yoyo: true,
@@ -72,7 +68,10 @@ const Sparkle = ({ delay, duration, x, y }) => {
       className="absolute w-4 h-4"
       style={{ left: x, top: y, zIndex: 20 }}
     >
-      <svg viewBox="0 0 24 24" className="w-full h-full text-yellow-300 drop-shadow-[0_0_8px_rgba(255,215,0,0.8)]">
+      <svg
+        viewBox="0 0 24 24"
+        className="w-full h-full text-yellow-300 drop-shadow-[0_0_8px_rgba(255,215,0,0.8)]"
+      >
         <path
           fill="currentColor"
           d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
@@ -87,7 +86,7 @@ const FloatingHeart = ({ delay, duration, x, y }) => {
 
   useEffect(() => {
     const heart = heartRef.current;
-    
+
     const tl = gsap.timeline({
       repeat: -1,
       yoyo: true,
@@ -100,8 +99,7 @@ const FloatingHeart = ({ delay, duration, x, y }) => {
       rotation: "+=15",
       duration: duration / 2,
       ease: "sine.inOut",
-    })
-    .to(heart, {
+    }).to(heart, {
       y: "-=20",
       x: "-=10",
       rotation: "-=15",
@@ -151,7 +149,7 @@ const FloatingElement = ({ className, delay, duration }) => {
 
   useEffect(() => {
     const element = elementRef.current;
-    
+
     const tl = gsap.timeline({
       repeat: -1,
       yoyo: true,
@@ -164,8 +162,7 @@ const FloatingElement = ({ className, delay, duration }) => {
       rotation: "+=10",
       duration: duration / 2,
       ease: "sine.inOut",
-    })
-    .to(element, {
+    }).to(element, {
       y: "-=15",
       x: "-=8",
       rotation: "-=10",
@@ -235,13 +232,17 @@ export default function Letter() {
         }}
         style={{
           transformStyle: "preserve-3d",
+          WebkitTransformStyle: "preserve-3d",
         }}
       >
         {/* Front of the letter */}
         <motion.div
-          className={`w-full backface-hidden bg-gradient-to-br from-pink-100 via-purple-50 to-blue-100 rounded-lg ${!isOpen ? '' : 'absolute h-full'}`}
+          className={`w-full bg-gradient-to-br from-pink-100 via-purple-50 to-blue-100 rounded-lg ${!isOpen ? 'relative' : 'absolute inset-0'}`}
           style={{
             backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+            transform: "rotateY(0deg)",
+            WebkitTransform: "rotateY(0deg)",
           }}
         >
           <div className="p-8">
@@ -281,7 +282,7 @@ export default function Letter() {
               </div>
 
               <div className="text-center space-y-8 relative z-10">
-                <motion.h2 
+                <motion.h2
                   className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-purple-600 mb-4"
                   animate={{
                     scale: [1, 1.05, 1],
@@ -293,24 +294,39 @@ export default function Letter() {
                 >
                   Click to Open
                 </motion.h2>
-                <motion.div 
+                <motion.div
                   className="w-32 h-32 mx-auto border-4 border-pink-300 rounded-full flex items-center justify-center bg-gradient-to-br from-pink-100 to-purple-100 shadow-lg"
                   animate={{
                     rotate: [0, 5, 0, -5, 0],
-                    boxShadow: isHovered ? "0 0 20px rgba(236, 72, 153, 0.5)" : "0 0 10px rgba(236, 72, 153, 0.3)",
+                    boxShadow: isHovered
+                      ? "0 0 20px rgba(236, 72, 153, 0.5)"
+                      : "0 0 10px rgba(236, 72, 153, 0.3)",
                   }}
                   transition={{
                     duration: 4,
                     repeat: Infinity,
                   }}
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-16 w-16 text-pink-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
                   </svg>
                 </motion.div>
-                <p className="text-2xl text-gray-600 font-medium">Your Special Letter</p>
+                <p className="text-2xl text-gray-600 font-medium">
+                  Your Special Letter
+                </p>
                 <div className="flex justify-center space-x-4">
-                  <motion.div 
+                  <motion.div
                     className="w-3 h-3 bg-pink-400 rounded-full"
                     animate={{
                       scale: [1, 1.5, 1],
@@ -321,7 +337,7 @@ export default function Letter() {
                       delay: 0,
                     }}
                   />
-                  <motion.div 
+                  <motion.div
                     className="w-3 h-3 bg-purple-400 rounded-full"
                     animate={{
                       scale: [1, 1.5, 1],
@@ -332,7 +348,7 @@ export default function Letter() {
                       delay: 0.2,
                     }}
                   />
-                  <motion.div 
+                  <motion.div
                     className="w-3 h-3 bg-blue-400 rounded-full"
                     animate={{
                       scale: [1, 1.5, 1],
@@ -351,10 +367,13 @@ export default function Letter() {
 
         {/* Back of the letter (content) */}
         <motion.div
-          className={`w-full p-8 backface-hidden bg-gradient-to-br from-pink-100 via-purple-50 to-blue-100 rounded-lg ${isOpen ? '' : 'absolute top-0 left-0 h-full'}`}
+          className={`w-full p-8 bg-gradient-to-br from-pink-100 via-purple-50 to-blue-100 rounded-lg ${isOpen ? 'relative' : 'absolute inset-0'}`}
           style={{
             backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
             transform: "rotateY(180deg)",
+            WebkitTransform: "rotateY(180deg)",
+            visibility: isOpen ? 'visible' : 'hidden',
           }}
         >
           <div className="border-4 border-dashed border-pink-300 rounded-lg p-8 py-12 bg-white/90 relative">
@@ -393,7 +412,7 @@ export default function Letter() {
             </div>
 
             <div className="relative z-10">
-              <motion.h2 
+              <motion.h2
                 className="text-5xl font-bold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-purple-600"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -401,47 +420,73 @@ export default function Letter() {
               >
                 Gửi Moon,
               </motion.h2>
-              <motion.div 
+              <motion.div
                 className="space-y-6 text-lg text-gray-700 max-w-4xl mx-auto"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
                 <div className="leading-relaxed italic text-gray-600 mb-4">
-                  Hôm nay không có dịp gì đặc biệt. Không sinh nhật, không kỷ niệm. Chỉ là một ngày bình thường, nhưng em muốn làm một điều nhỏ, là viết cho chị vài dòng thật lòng và gửi kèm theo một album nhỏ em đã chuẩn bị.
+                  Hôm nay không có dịp gì đặc biệt. Không sinh nhật, không kỷ
+                  niệm. Chỉ là một ngày bình thường, nhưng em muốn làm một điều
+                  nhỏ, là viết cho chị vài dòng thật lòng và gửi kèm theo một
+                  album nhỏ em đã chuẩn bị.
                 </div>
 
                 <div className="leading-relaxed mb-4">
-                  Em không phải là một người thân trong gia đình chị. Em chỉ là một người theo dõi, một người xem, nhưng lại cảm thấy có duyên và có lòng để thương quý một người con gái như chị.
+                  Em không phải là một người thân trong gia đình chị. Em chỉ là
+                  một người theo dõi, một người xem, nhưng lại cảm thấy có duyên
+                  và có lòng để thương quý một người con gái như chị.
                 </div>
 
                 <div className="leading-relaxed mb-4">
-                  Chị là một idol livestream, là hình ảnh rạng rỡ và chuyên nghiệp trước ống kính, là người mà ai nhìn vào cũng nghĩ "chị chắc hạnh phúc và tự tin lắm". Nhưng theo thời gian dõi theo chị, em cảm nhận được phía sau sự tỏa sáng ấy là rất nhiều cố gắng, là những đêm thức khuya, là những khoảnh khắc mệt mỏi mà chị chẳng thể hiện ra ngoài.
+                  Chị là một idol livestream, là hình ảnh rạng rỡ và chuyên
+                  nghiệp trước ống kính, là người mà ai nhìn vào cũng nghĩ "chị
+                  chắc hạnh phúc và tự tin lắm". Nhưng theo thời gian dõi theo
+                  chị, em cảm nhận được phía sau sự tỏa sáng ấy là rất nhiều cố
+                  gắng, là những đêm thức khuya, là những khoảnh khắc mệt mỏi mà
+                  chị chẳng thể hiện ra ngoài.
                 </div>
 
                 <div className="leading-relaxed mb-4">
-                  Chị đã luôn cố gắng thật nhiều, để mang lại năng lượng tích cực, để lan tỏa niềm vui, để khiến người khác cảm thấy được đồng hành. Và dù chẳng ai bắt buộc chị phải làm như thế, chị vẫn luôn chọn cách sống tử tế và kiên cường. Điều đó, với em, thật đáng quý.
+                  Chị đã luôn cố gắng thật nhiều, để mang lại năng lượng tích
+                  cực, để lan tỏa niềm vui, để khiến người khác cảm thấy được
+                  đồng hành. Và dù chẳng ai bắt buộc chị phải làm như thế, chị
+                  vẫn luôn chọn cách sống tử tế và kiên cường. Điều đó, với em,
+                  thật đáng quý.
                 </div>
 
                 <div className="leading-relaxed mb-4">
-                  Album nhỏ em làm tặng chị có thể không quá xuất sắc, nhưng từng hình ảnh, từng dòng chữ là tấm lòng chân thành. Như một lời nhắn gửi rằng: Chị không hề đơn độc trên hành trình của mình. Có những người, như em, vẫn đang âm thầm dõi theo, trân trọng, và mong chị luôn được sống thật với chính mình.
+                  Album nhỏ em làm tặng chị có thể không quá xuất sắc, nhưng
+                  từng hình ảnh, từng dòng chữ là tấm lòng chân thành. Như một
+                  lời nhắn gửi rằng: Chị không hề đơn độc trên hành trình của
+                  mình. Có những người, như em, vẫn đang âm thầm dõi theo, trân
+                  trọng, và mong chị luôn được sống thật với chính mình.
                 </div>
 
                 <div className="leading-relaxed mb-4">
-                  Nếu một ngày nào đó chị cảm thấy yếu lòng, hãy nhớ rằng không phải tất cả tình cảm đều cần ồn ào để tồn tại. Có những sự yêu mến đủ sâu, dù im lặng, vẫn là một điểm tựa vững chắc để chị tiếp tục vững bước.
+                  Nếu một ngày nào đó chị cảm thấy yếu lòng, hãy nhớ rằng không
+                  phải tất cả tình cảm đều cần ồn ào để tồn tại. Có những sự yêu
+                  mến đủ sâu, dù im lặng, vẫn là một điểm tựa vững chắc để chị
+                  tiếp tục vững bước.
                 </div>
 
                 <div className="leading-relaxed mb-4">
-                  Cảm ơn chị đã cho em, và rất nhiều người khác, một lý do để mỉm cười mỗi ngày.
+                  Cảm ơn chị đã cho em, và rất nhiều người khác, một lý do để
+                  mỉm cười mỗi ngày.
                 </div>
 
                 <div className="leading-relaxed mb-4">
-                  Chúc chị luôn rực rỡ như cách chị vẫn sống. Và nếu được, hãy để mình cũng được đồng hành, dù chỉ một phần rất nhỏ, trong chặng đường phía trước của chị.
+                  Chúc chị luôn rực rỡ như cách chị vẫn sống. Và nếu được, hãy
+                  để mình cũng được đồng hành, dù chỉ một phần rất nhỏ, trong
+                  chặng đường phía trước của chị.
                 </div>
 
                 <div className="mt-12 space-y-2 text-right">
                   <div className="text-xl italic">Thương mến,</div>
-                  <div className="text-2xl font-semibold text-pink-600">Yinnz</div>
+                  <div className="text-2xl font-semibold text-pink-600">
+                    Yinnz
+                  </div>
                 </div>
               </motion.div>
             </div>

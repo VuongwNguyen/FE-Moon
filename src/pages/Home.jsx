@@ -22,7 +22,7 @@ export default function Home() {
           <div className="flex flex-col items-center text-center">
             <div className="relative mb-6">
               <img
-                src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/c6b50230f3679e3c6ff8d1f9ed6ade4a~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=3e860fe4&x-expires=1749567600&x-signature=oQ06wUebP7DMSKjdsIVsxzbhoUE%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my"
+                src="https://ik.imagekit.io/g1v8sjzcr/moon/images/c6b50230f3679e3c6ff8d1f9ed6ade4a~tplv-tiktokx-cropcenter_1080_1080.jpeg?updatedAt=1749651588313"
                 alt="avatar"
                 className="w-32 h-32 md:w-40 md:h-40 rounded-full shadow-2xl border-4 border-white/30 object-cover transform hover:scale-105 transition-transform duration-300"
               />
